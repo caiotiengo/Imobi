@@ -1,0 +1,565 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastra casa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div padding>
+    <ion-segment>
+      <ion-segment-button value="Aluguel" (click)="aluguel()">
+        Aluguel
+      </ion-segment-button>
+      <ion-segment-button value="Admin" (click)="admin()">
+        Administração
+      </ion-segment-button>
+      <ion-segment-button value="Venda" (click)="venda()">
+        Venda
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-list [hidden]="hideMe">
+    <ion-card>
+      <ion-item>
+      <h2 style="margin-left: auto; margin-right: auto"> Venda</h2>
+      </ion-item>
+    <ion-item>
+      <ion-label>Tipo: Venda </ion-label>
+      <ion-input type="text" [(ngModel)]="tipo" value="Venda" disabled></ion-input>
+    </ion-item>
+
+    <ion-item>
+
+      <ion-label position="floating">Titulo:</ion-label>
+      <ion-input type="text" [(ngModel)]="titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descrição do imóvel</ion-label>
+      <ion-input type="text" [(ngModel)]="Observacao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Endereço</ion-label>
+      <ion-input type="text" [(ngModel)]="Endereco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Bairro</ion-label>
+      <ion-input type="text" [(ngModel)]="Bairro"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Valor</ion-label>
+      <ion-input type="text" [(ngModel)]="PrecoVenda"></ion-input>
+    </ion-item>
+      <ion-item>
+        <p>Deseja colocar algum valor para possivel locação?</p>
+
+        <ion-toggle color="primary" (click)="hideloc()" >Concorda com os nossos termos?</ion-toggle>
+
+      </ion-item>
+    <ion-item [hidden]="hideMe4">
+      <ion-label position="floating">Valor Locação</ion-label>
+      <ion-input type="text" [(ngModel)]="PrecoLocacao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Valor do IPTU</ion-label>
+      <ion-input type="text" [(ngModel)]="ValorIPTU"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Area Util</ion-label>
+      <ion-input type="text" [(ngModel)]="AreaUtil"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Area Total</ion-label>
+      <ion-input type="text" [(ngModel)]="AreaTotal"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Banheiros</ion-label>
+      <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdBanheiros">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Quantidade de Quartos</ion-label>
+      <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdDormitorios">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Quantidade de Suites</ion-label>
+      <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdSuites">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+      </ion-select>
+
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Quantidade de Vagas</ion-label>
+      <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdVagas">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+      </ion-select>
+    </ion-item>
+    </ion-card>
+
+    <ion-card>
+<ion-item style="background-color: #0bb8cc">
+  <h3 style="margin-right: auto; margin-left: auto; ">Sobre o Prédio</h3>
+
+</ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Apartamentos por andar</ion-label>
+      <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdUnicadesAndar">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+      </ion-select>    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Quantos Andares</ion-label>
+      <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdAndar">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ano de construção</ion-label>
+      <ion-input type="text" [(ngModel)]="AnoConstrucao"></ion-input>
+    </ion-item>
+</ion-card>
+
+
+    <ion-item>
+      <p>Concorda com os nossos termos?</p>
+      <ion-toggle color="primary" [(ngModel)]="aprovado"></ion-toggle>
+
+    </ion-item>
+    <ion-item>
+      <p>Publicação patrocinada?</p>
+
+      <ion-toggle color="primary" [(ngModel)]="patrocinado">Concorda com os nossos termos?</ion-toggle>
+
+    </ion-item>
+
+
+  </ion-list>
+  <ion-list [hidden]="hideMe3">
+    <ion-card>
+      <ion-item>
+        <h2 style="margin-left: auto; margin-right: auto"> Administração</h2>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tipo: Administração </ion-label>
+        <ion-input type="text" [(ngModel)]="tipo" value="Administração" disabled></ion-input>
+      </ion-item>
+
+      <ion-item>
+
+        <ion-label position="floating">Titulo:</ion-label>
+        <ion-input type="text" [(ngModel)]="titulo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Descrição do imóvel</ion-label>
+        <ion-input type="text" [(ngModel)]="Observacao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Endereço</ion-label>
+        <ion-input type="text" [(ngModel)]="Endereco"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Bairro</ion-label>
+        <ion-input type="text" [(ngModel)]="Bairro"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">Valor</ion-label>
+        <ion-input type="text" [(ngModel)]="PrecoVenda"></ion-input>
+      </ion-item>
+      <ion-item>
+        <p>Deseja colocar algum valor para possivel locação?</p>
+
+        <ion-toggle color="primary" (click)="hideloc()" >Concorda com os nossos termos?</ion-toggle>
+
+      </ion-item>
+      <ion-item [hidden]="hideMe4">
+        <ion-label position="floating">Valor Locação</ion-label>
+        <ion-input type="text" [(ngModel)]="PrecoLocacao"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Valor do IPTU</ion-label>
+        <ion-input type="text" [(ngModel)]="ValorIPTU"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Area Util</ion-label>
+        <ion-input type="text" [(ngModel)]="AreaUtil"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Area Total</ion-label>
+        <ion-input type="text" [(ngModel)]="AreaTotal"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Banheiros</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdBanheiros">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Quantidade de Quartos</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdDormitorios">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Quantidade de Suites</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdSuites">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Quantidade de Vagas</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdVagas">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item style="background-color: #0bb8cc">
+        <h3 style="margin-right: auto; margin-left: auto; ">Sobre o Prédio</h3>
+
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">Apartamentos por andar</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdUnicadesAndar">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>    </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Quantos Andares</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdAndar">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Ano de construção</ion-label>
+        <ion-input type="text" [(ngModel)]="AnoConstrucao"></ion-input>
+      </ion-item>
+    </ion-card>
+
+
+    <ion-item>
+      <p>Concorda com os nossos termos?</p>
+      <ion-toggle color="primary" [(ngModel)]="aprovado"></ion-toggle>
+
+    </ion-item>
+    <ion-item>
+      <p>Publicação patrocinada?</p>
+
+      <ion-toggle color="primary" [(ngModel)]="patrocinado">Concorda com os nossos termos?</ion-toggle>
+
+    </ion-item>
+
+
+  </ion-list>
+  <ion-list [hidden]="hideMe2">
+    <ion-card>
+      <ion-item>
+        <h2 style="margin-left: auto; margin-right: auto"> Aluguel</h2>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tipo: Aluguel </ion-label>
+        <ion-input type="text" [(ngModel)]="tipo" value="Aluguel" disabled></ion-input>
+      </ion-item>
+
+      <ion-item>
+
+        <ion-label position="floating">Titulo:</ion-label>
+        <ion-input type="text" [(ngModel)]="titulo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Descrição do imóvel</ion-label>
+        <ion-input type="text" [(ngModel)]="Observacao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Endereço</ion-label>
+        <ion-input type="text" [(ngModel)]="Endereco"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Bairro</ion-label>
+        <ion-input type="text" [(ngModel)]="Bairro"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">Valor do aluguel</ion-label>
+        <ion-input type="text" [(ngModel)]="PrecoLocacao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <p>Deseja colocar algum valor para possivel Venda?</p>
+
+        <ion-toggle color="primary" (click)="hideloc()" >Concorda com os nossos termos?</ion-toggle>
+
+      </ion-item>
+      <ion-item [hidden]="hideMe4">
+        <ion-label position="floating">Valor de venda</ion-label>
+        <ion-input type="text" [(ngModel)]="PrecoVenda"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Valor do IPTU</ion-label>
+        <ion-input type="text" [(ngModel)]="ValorIPTU"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Area Util</ion-label>
+        <ion-input type="text" [(ngModel)]="AreaUtil"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Area Total</ion-label>
+        <ion-input type="text" [(ngModel)]="AreaTotal"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Banheiros</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdBanheiros">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Quantidade de Quartos</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdDormitorios">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Quantidade de Suites</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdSuites">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Quantidade de Vagas</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdVagas">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item style="background-color: #0bb8cc">
+        <h3 style="margin-right: auto; margin-left: auto; ">Sobre o Prédio</h3>
+
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">Apartamentos por andar</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdUnicadesAndar">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>    </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Quantos Andares</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!" [(ngModel)]="QtdAndar">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Ano de construção</ion-label>
+        <ion-input type="text" [(ngModel)]="AnoConstrucao"></ion-input>
+      </ion-item>
+    </ion-card>
+
+
+    <ion-item>
+      <p>Concorda com os nossos termos?</p>
+      <ion-toggle color="primary" [(ngModel)]="aprovado"></ion-toggle>
+
+    </ion-item>
+    <ion-item>
+      <p>Publicação patrocinada?</p>
+
+      <ion-toggle color="primary" [(ngModel)]="patrocinado">Concorda com os nossos termos?</ion-toggle>
+
+    </ion-item>
+
+
+  </ion-list>
+
+  <ion-button fill="solid" expand="block" color="dark" (click)="registre_casa()">Entrar</ion-button>
+</ion-content>

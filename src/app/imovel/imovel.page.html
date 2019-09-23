@@ -1,0 +1,177 @@
+<ion-header>
+    <ion-toolbar color="#4f98bb">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Imovel</ion-title>
+  </ion-toolbar>
+    <ion-fab vertical="bottom" style="color: gray" horizontal="end" edge slot="fixed">
+        <ion-fab-button >
+            <ion-icon   name="share"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="bottom">
+            <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
+            <ion-fab-button><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
+            <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
+
+        </ion-fab-list>
+    </ion-fab>
+</ion-header>
+
+<ion-content>
+        <ion-card>
+            <ion-label *ngIf="imoveis">
+
+            <ion-slides autoplay="5000" loop="true" speed="300" pager="true">
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[0].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[1].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[2].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[3].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[4].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[5].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[6].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[7].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[8].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[9].URLArquivo}}"/>
+                </ion-slide>
+                <ion-slide>
+                    <img src="{{imoveis.Fotos?.Foto[10].URLArquivo}}"/>
+                </ion-slide>
+            </ion-slides>
+            <ion-item>
+
+                <ion-icon name="pin" slot="start"></ion-icon>
+                <ion-label>{{imoveis.Endereco}}{{imoveis.Bairro}} {{imoveis.UF}}</ion-label>
+                <ion-button fill="outline" slot="end">View</ion-button>
+            </ion-item>
+
+            <ion-card-content>
+
+                <br/>
+                <h2 style="color:black"><b> Informações</b></h2>
+                {{imoveis.Observacao}}
+
+                <hr>
+                <br/>
+                <h2 style="color:black"><b>Detalhes:</b></h2>
+                <ion-row>
+
+                    <ion-col col-3>Valor • R${{imoveis.PrecoVenda}} <br/>
+                        Condominio • R${{imoveis.PrecoCondominio}}<br/>
+                        IPTU • R${{imoveis.ValorIPTU}}<br/>
+                        Área útil • {{imoveis.AreaUtil}}M²<br/>
+                        Área total • {{imoveis.AreaTotal}}M²<br/>
+                        Dormitorios • {{imoveis.QtdDormitorios}}<br/>
+                        Suítes • {{imoveis.QtdSuites}}</ion-col>
+                    <ion-col col-3>  Banheiros • {{imoveis.QtdBanheiros}}<br/>
+                        Vagas • {{imoveis.QtdVagas}}<br/>
+                        Elevadores • {{imoveis.QtdElevador}}<br/>
+                        Unidades por andar • {{imoveis.QtdUnicadesAndar}}<br/>
+                        Andares • {{imoveis.QtdAndar}}<br/>
+                        Ano de Contrução • {{imoveis.AnoConstrucao}}</ion-col>
+                </ion-row>
+
+            </ion-card-content><br/>
+            <ion-icon name="call"></ion-icon> (21) 3264-9810 (21) 97009-2056
+            <ion-button>Agende sua visita</ion-button>
+
+            </ion-label>
+        </ion-card>
+    <ion-card *ngFor="let imoveis of peloApp | async">
+
+        <ion-label *ngIf="imoveis.Observacao === slug">
+        <ion-slides autoplay="5000" loop="true" speed="300" pager="true">
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[0].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[1].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[2].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[3].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[4].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[5].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[6].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[7].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[8].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[9].URLArquivo}}"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="{{imoveis.Fotos?.Foto[10].URLArquivo}}"/>
+            </ion-slide>
+        </ion-slides>
+        <ion-item>
+
+            <ion-icon name="pin" slot="start"></ion-icon>
+            <ion-label>{{imoveis.Endereco}}{{imoveis.Bairro}} {{imoveis.UF}}</ion-label>
+            <ion-button fill="outline" slot="end">View</ion-button>
+        </ion-item>
+
+        <ion-card-content>
+
+            <br/>
+            <h2 style="color:black"><b> Informações</b></h2>
+            {{imoveis.Observacao}}
+
+            <hr>
+            <br/>
+            <h2 style="color:black"><b>Detalhes:</b></h2>
+            <ion-row>
+
+                <ion-col col-3>Valor • R${{imoveis.PrecoVenda}} <br/>
+                    Condominio • R${{imoveis.PrecoCondominio}}<br/>
+                    IPTU • R${{imoveis.ValorIPTU}}<br/>
+                    Área útil • {{imoveis.AreaUtil}}M²<br/>
+                    Área total • {{imoveis.AreaTotal}}M²<br/>
+                    Dormitorios • {{imoveis.QtdDormitorios}}<br/>
+                    Suítes • {{imoveis.QtdSuites}}</ion-col>
+                <ion-col col-3>  Banheiros • {{imoveis.QtdBanheiros}}<br/>
+                    Vagas • {{imoveis.QtdVagas}}<br/>
+                    Elevadores • {{imoveis.QtdElevador}}<br/>
+                    Unidades por andar • {{imoveis.QtdUnicadesAndar}}<br/>
+                    Andares • {{imoveis.QtdAndar}}<br/>
+                    Ano de Contrução • {{imoveis.AnoConstrucao}}</ion-col>
+            </ion-row>
+
+        </ion-card-content><br/>
+        <ion-icon name="call"></ion-icon> (21) 3264-9810 (21) 97009-2056
+        <ion-button>Agende sua visita</ion-button>
+
+      </ion-label>
+    </ion-card>
+
+</ion-content>

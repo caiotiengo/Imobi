@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="#4f98bb">
+    <ion-buttons slot="start" style="color: #f4f5f8">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: #f4f5f8">Perfil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-item>
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label>ion-item in a card, icon left, button right</ion-label>
+      <ion-button fill="outline" slot="end">View</ion-button>
+    </ion-item>
+
+    <ion-card-content>
+      {{userEmail}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let items of peloApp | async">
+      <ion-item *ngIf="items.email === userEmail">
+        <ion-thumbnail><img src=""></ion-thumbnail>
+        <ion-label style="margin-left: 2%">
+          <h2 style="overflow: hidden !important; text-overflow: ellipsis; white-space: nowrap;">{{items.titulo}}</h2>
+          <p>Valor • R${{items.valor}}</p>
+          <p>Bairro • {{items.local}}</p>
+        </ion-label>
+
+        <!--ion-button fill="clear" align-items-end [href]="'/imovel/' + items.CodigoImovel" routerDirection="foward"> View</ion-button-->
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option>  <ion-icon slot="start" name="star"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+  </ion-list>
+</ion-content>

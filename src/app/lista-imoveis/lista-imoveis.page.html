@@ -1,0 +1,177 @@
+<ion-header>
+  <ion-toolbar color="#4f98bb">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+
+        <ion-icon  slot="end" name="contact" (click)="perfil()">Perfil</ion-icon>
+    </ion-buttons>
+    <ion-title>Imóveis
+    </ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-slides>
+    <ion-slide>
+      <img style="width: 100%; background-size: cover" src="/assets/icon/logoimoveis.jpg">
+    </ion-slide>
+  </ion-slides>
+
+
+
+  
+  <ion-button expand="full" fill="outline"  text-center (click)="cadastra_casa()">Anuncie aqui</ion-button>
+
+  <ion-card style="border: 1px darkgrey">
+    <ion-card-header>
+      <ion-card-subtitle>Patrocinados</ion-card-subtitle>
+      <br/>
+      <img src="https://fotos.infoideias.net/midasweb/arquivos/1013/imoveis/fotos/353/img/353_G1487014224.jpg">
+      <ion-card-title>Linda sala comercial (Freguesia)</ion-card-title>
+      <p>R$120.000,00</p>
+    </ion-card-header>
+
+    <ion-card-content>
+      Excelente sala comercial, 24 m com banheiro, com 1 vaga de garagem, totalmente pronta servindo para vários fins,
+      em prédio imponente com salas de reuniões, auditório, estacionamento rotativo 24 horas. Aceitando financiamento.
+    </ion-card-content>
+  </ion-card>
+
+  <h3 text-center >Anuncios</h3>
+  <ion-searchbar showCancelButton cancelButtonText="Custom Cancel"></ion-searchbar>
+
+
+  <div padding>
+    <ion-segment>
+      <ion-segment-button value="Aluguel" (click)="aluguel()">
+        Aluguel
+      </ion-segment-button>
+      <ion-segment-button value="Admin" (click)="admin()">
+        Administração
+      </ion-segment-button>
+      <ion-segment-button value="Venda" (click)="venda()">
+        Venda
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-list>
+
+
+    <ion-item-sliding *ngFor="let items of peloApp | async">
+
+      <ion-label *ngIf="items.aprovado === true">
+
+      <ion-item [hidden]="hideMe2"  *ngIf="items.tipo === 'Aluguel'">
+
+        <ion-thumbnail><img src="/assets/icon/queappfoda.jpg"></ion-thumbnail>
+        <ion-label style="margin-left: 2%">
+          <h2 style="overflow: hidden !important; text-overflow: ellipsis; white-space: nowrap;">{{items.Observacao}}</h2>
+          <p>Aluguel • R${{items.PrecoLocacao}}</p>
+          <p>Venda • R${{items.PrecoVenda}}</p>
+          <p>Bairro • {{items.Bairro}}</p>
+        </ion-label>
+
+        <ion-button align-items-end [href]="'/imovel/' + items.Observacao" routerDirection="foward">Veja</ion-button>
+      </ion-item>
+
+
+
+        <ion-item [hidden]="hideMe3"  *ngIf="items.tipo === 'Administração'">
+          <ion-thumbnail><img src="/assets/icon/queappfoda.jpg"></ion-thumbnail>
+          <ion-label style="margin-left: 2%">
+            <h2 style="overflow: hidden !important; text-overflow: ellipsis; white-space: nowrap;">{{items.Observacao}}</h2>
+            <p>Aluguel • R${{items.PrecoLocacao}}</p>
+            <p>Venda • R${{items.PrecoVenda}}</p>
+            <p>Bairro • {{items.Bairro}}</p>
+          </ion-label>
+
+          <ion-button  align-items-end [href]="'/imovel/' + items.Observacao" routerDirection="foward"> Veja</ion-button>
+        </ion-item>
+
+
+
+        <ion-item [hidden]="hideMe"  *ngIf="items.tipo === 'Venda'">
+          <ion-thumbnail><img src="/assets/icon/queappfoda.jpg"></ion-thumbnail>
+          <ion-label style="margin-left: 2%">
+            <h2 style="overflow: hidden !important; text-overflow: ellipsis; white-space: nowrap;">{{items.Observacao}}</h2>
+            <p>Aluguel • R${{items.PrecoLocacao}}</p>
+            <p>Venda • R${{items.PrecoVenda}}</p>
+            <p>Bairro • {{items.Bairro}}</p>
+          </ion-label>
+
+          <ion-button align-items-end [href]="'/imovel/' + items.Observacao" routerDirection="foward"> Veja</ion-button>
+        </ion-item>
+
+
+
+        <ion-item-options side="end">
+        <ion-item-option>  <ion-icon slot="start" name="star"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      </ion-label>
+    </ion-item-sliding>
+
+    <ion-item-sliding *ngFor="let items of imoveis.Imoveis?.Imovel">
+      <ion-item [hidden]="hideMe2" *ngIf="items.PrecoLocacao !== '0'">
+        <ion-thumbnail><img src="{{items.Fotos?.Foto[0].URLArquivo}}"></ion-thumbnail>
+        <ion-label style="margin-left: 2%"><h2 style="overflow: hidden !important; text-overflow: ellipsis; white-space: nowrap;">{{items.Observacao}}</h2>
+          <p>Aluguel • R${{items.PrecoLocacao}}</p>
+          <p>Venda • R${{items.PrecoVenda}}</p>
+          <p>Bairro • {{items.Bairro}}</p>
+        </ion-label>
+
+        <ion-button align-items-end [href]="'/imovel/' + items.CodigoImovel" routerDirection="foward"> Veja</ion-button>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option>  <ion-icon slot="start" name="star"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+
+
+      <!-- ADMINISTRAÇÃO -->
+      <ion-item [hidden]="hideMe3">
+        <ion-thumbnail><img src="{{items.Fotos?.Foto[0].URLArquivo}}"></ion-thumbnail>
+        <ion-label style="margin-left: 2%"><h2 style="overflow: hidden !important; text-overflow: ellipsis; white-space: nowrap;">{{items.Observacao}}</h2>
+          <p>Valor • R${{items.PrecoVenda}}</p>
+          <p>Bairro • {{items.Bairro}}</p>
+        </ion-label>
+
+        <ion-button  align-items-end [href]="'/imovel/' + items.CodigoImovel" routerDirection="foward"> Veja</ion-button>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option>  <ion-icon slot="start" name="star"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+
+
+
+
+
+      <!-- VENDA -->
+      <ion-item [hidden]="hideMe" *ngIf="items.PrecoVenda !== '0'">
+        <ion-thumbnail><img src="{{items.Fotos?.Foto[0].URLArquivo}}"></ion-thumbnail>
+        <ion-label style="margin-left: 2%"><h2 style="overflow: hidden !important; text-overflow: ellipsis; white-space: nowrap;">{{items.Observacao}}</h2>
+          <p>Valor • R${{items.PrecoVenda}}</p>
+          <p>Bairro • {{items.Bairro}}</p>
+        </ion-label>
+
+        <ion-button  align-items-end [href]="'/imovel/' + items.CodigoImovel" routerDirection="foward"> Veja</ion-button>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option>  <ion-icon slot="start" name="star"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+
+    </ion-item-sliding>
+
+
+  </ion-list>
+</ion-content>
